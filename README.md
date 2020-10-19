@@ -89,8 +89,7 @@ ETM also is designed to work within Docker containers.
 ### Clone ETM
 
 * `cd /var/matrix/app`
-* `git clone https://gitlab.blacklanternsecurity.com/BLS/enter_the_matrix.git`
-* Supply your LDAP credentials
+* `git clone https://github.com/blacklanternsecurity/enter_the_matrix.git
 
 #### Fatal error about certificate verification
 
