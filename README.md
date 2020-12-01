@@ -16,7 +16,6 @@
          * [SSL Certificate](#ssl-certificate)
          * [Nginx Config](#nginx-config)
       * [Deploy](#deploy)
-      * [BLS OPS NOTES](#bls-ops-notes)
    * [ETM Usage](#etm-usage)
       * [Creating Users](#creating-users)
       * [Editing Users](#editing-users)
@@ -89,7 +88,7 @@ ETM also is designed to work within Docker containers.
 ### Clone ETM
 
 * `cd /var/matrix/app`
-* `git clone https://github.com/blacklanternsecurity/enter_the_matrix.git
+* `git clone https://github.com/blacklanternsecurity/enter_the_matrix.git`
 
 #### Fatal error about certificate verification
 
@@ -118,6 +117,21 @@ ETM also is designed to work within Docker containers.
 For whatever reason the nginx configuration does not play nicely coming from a Windows development environment even when specifically telling GIT to convert to LF end-of-line format. So, do the following:
 
 * `dos2unix /var/matrix/app/enter_the_matrix/enter_the_matrix.conf`
+
+## Build
+
+### .NET SDK
+
+* `wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb`
+* `sudo dpkg -i packages-microsoft-prod.deb`
+* `sudo apt-get install -y apt-transport-https`
+* `sudo apt-get update`
+* `sudo apt-get install -y dotnet-sdk-5.0`
+
+### Build the project
+
+* `cd /var/matrix/app/enter_the_matrix`
+* `dotnet publish --configuration Release`
 
 ## Deploy
 
