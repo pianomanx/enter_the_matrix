@@ -117,7 +117,7 @@ ETM also is designed to work within Docker containers.
 * Place your SSL certificate at `/var/matrix/app/enter_the_matrix/matrix.cer`
 * Place your SSL key at `/var/matrix/app/enter_the_matrix/matrix.key`
 * To create your own self-signed certificate and key:
-   * `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout matrix.key -out matrix.crt`
+   * `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout matrix.key -out matrix.cer`
 
 ### Nginx Config
 
