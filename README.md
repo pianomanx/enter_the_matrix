@@ -124,17 +124,6 @@ For whatever reason the nginx configuration does not play nicely coming from a W
 * `cd /var/matrix/app/enter_the_matrix`
 * `docker-compose up -d`
 
-## BLS OPS NOTES
-
-To properly deploy for BLS OPS existing data, docker-compose.yaml should use mongodb image mongo:3.6
-
-* `image: mongo:3.6`
-
-To properly integrate with existing database, change appsettings.json and docker-compose.yaml to use the "admin" user instead of "root"
-
-* `"ConnectionString": "mongodb://admin:CHANGEMESUCKAH...",`
-* `- MONGO_INITDB_ROOT_USERNAME=admin`
-
 # ETM Usage
 
 ![Login Portal](readme-images/Login.png)
