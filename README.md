@@ -82,16 +82,16 @@ ETM also is designed to work within Docker containers.
 
 ### Creating directories 
 
-* `mkdir /var/matrix`
-* `mkdir /var/matrix/app`
-* `mkdir /var/matrix/mongo`
-* `mkdir /var/matrix/mongo/db`
-* `mkdir /var/matrix/mongo/configdb`
+* `sudo mkdir /var/matrix`
+* `sudo mkdir /var/matrix/app`
+* `sudo mkdir /var/matrix/mongo`
+* `sudo mkdir /var/matrix/mongo/db`
+* `sudo mkdir /var/matrix/mongo/configdb`
 
 ### Clone ETM
 
-* `cd /var/matrix/app`
-* `git clone https://github.com/blacklanternsecurity/enter_the_matrix.git`
+* `sudo cd /var/matrix/app`
+* `sudo git clone https://github.com/blacklanternsecurity/enter_the_matrix.git`
 
 #### Fatal error about certificate verification
 
@@ -99,14 +99,16 @@ ETM also is designed to work within Docker containers.
 
 ### Edit docker-compose.yaml
 
+* `cd /var/matrix/app/enter_the_matrix`
+* `sudo vim docker-compose.yaml`
 * Change the following line to a unique password (alphanumeric)
 * `- MONGO_INITDB_ROOT_PASSWORD=CHANGEMESUCKAH`
 
 ### Edit AppSettings.JSON
 
-* `cd /var/matrix/app/enter_the_matrix`
-* `vim appsettings.json`
-* Alter the ConnectionString to use your password for the MongoDB container
+* `sudo cd /var/matrix/app/enter_the_matrix`
+* `sudo vim appsettings.json`
+* Alter the ConnectionString to use your password from the previous step for the MongoDB container
 * Replace the "Ldap" fields with your LDAP configuration
 * Replace the "LocalAuthSettings" with your desired administrative account credentials
 
@@ -114,12 +116,14 @@ ETM also is designed to work within Docker containers.
 
 * Place your SSL certificate at `/var/matrix/app/enter_the_matrix/matrix.cer`
 * Place your SSL key at `/var/matrix/app/enter_the_matrix/matrix.key`
+* To create your own self-signed certificate and key:
+   * `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout matrix.key -out matrix.crt`
 
 ### Nginx Config
 
 For whatever reason the nginx configuration does not play nicely coming from a Windows development environment even when specifically telling GIT to convert to LF end-of-line format. So, do the following:
 
-* `dos2unix /var/matrix/app/enter_the_matrix/enter_the_matrix.conf`
+* `sudo dos2unix /var/matrix/app/enter_the_matrix/enter_the_matrix.conf`
 
 ## Build
 
@@ -133,13 +137,13 @@ For whatever reason the nginx configuration does not play nicely coming from a W
 
 ### Build the project
 
-* `cd /var/matrix/app/enter_the_matrix`
-* `dotnet publish --configuration Release`
+* `sudo cd /var/matrix/app/enter_the_matrix`
+* `sudo dotnet publish --configuration Release`
 
 ## Deploy
 
-* `cd /var/matrix/app/enter_the_matrix`
-* `docker-compose up -d`
+* `sudo cd /var/matrix/app/enter_the_matrix`
+* `sudo docker-compose up -d`
 
 # ETM Usage
 
