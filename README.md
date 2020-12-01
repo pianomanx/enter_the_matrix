@@ -6,7 +6,7 @@
          * [Install Vim](#install-vim)
          * [Install GIT](#install-git)
          * [Install DOS2Unix](#install-dos2unix)
-         * [Instal Docker Engine](#instal-docker-engine)
+         * [Instal Docker Engine](#install-docker-engine)
       * [Setting up your environment](#setting-up-your-environment)
          * [Creating directories](#creating-directories)
          * [Clone ETM](#clone-etm)
