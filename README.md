@@ -145,6 +145,10 @@ For whatever reason the nginx configuration does not play nicely coming from a W
 * `sudo cd /var/matrix/app/enter_the_matrix`
 * `sudo docker-compose up -d`
 
+## Test
+
+* Navigate to https://localhost or http://localhost to test everything is working as it should be.
+
 # ETM Usage
 
 ![Login Portal](readme-images/Login.png)
