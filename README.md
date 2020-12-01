@@ -82,11 +82,11 @@ ETM also is designed to work within Docker containers.
 
 ### Creating directories 
 
-* /var/matrix
-* /var/matrix/app
-* /var/matrix/mongo
-* /var/matrix/mongo/db
-* /var/matrix/mongo/configdb
+* `mkdir /var/matrix`
+* `mkdir /var/matrix/app`
+* `mkdir /var/matrix/mongo`
+* `mkdir /var/matrix/mongo/db`
+* `mkdir /var/matrix/mongo/configdb`
 
 ### Clone ETM
 
