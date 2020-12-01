@@ -18,7 +18,9 @@
         </form>
     </div>
     <div class="dialog-box_success" data-title="Steplates">
-        <ul class="list-group">
+        <input type="text" class="bg-dark text-light" style="float: right;" placeholder="FILTER" id="filterInput" onkeyup="filterSteplates();"/>
+        <br /><br />
+        <ul class="list-group" id="ulGroup">
             <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action bg-dark text-light">
                 <span>Event</span>
                 <span>Risk</span>
@@ -41,3 +43,23 @@
         </ul>
     </div>
 </div>
+
+@section Scripts{ 
+<script>
+    function filterSteplates() {
+        var input = document.getElementById("filterInput");
+        var filter = input.value.toUpperCase();
+
+        var ul = document.getElementById("ulGroup");
+        var rows = ul.children;
+        for (var i = 1; i < rows.length; i++) {
+            var content = rows[i].children[0].textContent.toUpperCase();
+            if (content.indexOf(filter) > -1) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+</script>
+}

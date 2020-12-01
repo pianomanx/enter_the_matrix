@@ -26,7 +26,7 @@ namespace Enter_The_Matrix.FactorModels
             Entities.Add("business-leader", " Business Leader");
             Entities.Add("business-meeting", "Business Meeting");
             Entities.Add("camera-device", "Camera");
-            Entities.Add("cellphone", "Cellphone");
+            Entities.Add("cell-phone", "Cellphone");
             Entities.Add("company", "Company");
             Entities.Add("compromised-host", "Compromised Host");
             Entities.Add("cve", "CVE");

@@ -16,7 +16,7 @@
         <button type="button" class="btn-neon-green" data-toggle="modal" data-target="#createModal" id="new-assessment-btn">CREATE ASSESSMENT</button>
     </div>
     <div class="dialog-box_success" data-title="Assessments">
-        <ul class="list-group">
+        <ul class="list-group " style="max-height:400px; overflow:hidden; overflow-y:scroll;" id="overflowSlider">
             @{ foreach (var assessments in Model)
                             {
                                 var data = new Dictionary<string, string>

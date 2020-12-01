@@ -20,13 +20,14 @@
         <div class="dialog-box_success" data-title="Edit Steplate">
 
             @{
-                            <div class="form-group factor-container">
-                                <label for="mitre-ttp">MITRE ATT&CK Technique ID</label>
-                                @{ foreach (string line in ViewBag.techniques.htmlContent)
-                                                {
+                        <div class="form-group factor-container">
+                            <label for="mitre-ttp">MITRE ATT&CK Technique ID</label>
+                            <input onkeyup="mitreSearchFilter();" type="text" style="float: right;" class="bg-dark text-light" id="mitreFilter" placeholder="FILTER">
+                            @{ foreach (string line in ViewBag.techniques.htmlContent)
+                                {
                                     @Html.Raw(line);
                                 } }
-                            </div>
+                        </div>
 
                                         <div class="form-group factor-container">
                                             <label for="event-textarea">Event Description</label>
@@ -674,6 +675,40 @@
         function topFunction() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
+        }
+
+        function mitreSearchFilter() {
+            var accordion = document.getElementById("accordion");
+            var sections = accordion.children;
+            var input = document.getElementById("mitreFilter");
+            var filter = input.value.toUpperCase();
+
+            // iterate through the sections
+            for (var i = 0; i < sections.length; i++) {
+                var inSection = false;
+                // iterate through the tactics
+                var tactics = sections[i].children[1].children;
+                for (var j = 0; j < tactics.length; j++) {
+                    var inTactic = false;
+                    // iterate through the techniques
+                    var techniques = tactics[j].children[0].children[1].children;
+                    for (var k = 0; k < techniques.length; k++) {
+                        var inTechnique = false;
+                        if (techniques[k].textContent.toUpperCase().indexOf(filter) > -1) {
+                            techniques[k].style.display = "";
+                            inTechnique = true;
+                            inTactic = true;
+                        } else {
+                            techniques[k].style.display = "none";
+                        }
+                    }
+                    if (inTactic) { tactics[j].style.display = ""; inSection = true; }
+                    else { tactics[j].style.display = "none"; }
+                }
+                if (inSection) { sections[i].style.display = ""; }
+                else { sections[i].style.display = "none"; }
+            }
+
         }
     </script>
 }

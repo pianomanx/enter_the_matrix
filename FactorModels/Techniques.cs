@@ -28,8 +28,12 @@ namespace Enter_The_Matrix.FactorModels
 
             // Populate our techniques list
 
-            // tactics/pre -- count 15 at time of writing
+            /* MITRE PRE HAS BEEN DEPRECATED 10-27-2020 */
             #region tactics/pre
+            
+            /*
+
+            // tactics/pre -- count 15 at time of writing
 
             //htmlContent.Add("<optgroup label='PRE-ATT&CK'>");
             htmlContent.Add("<div class='card'>");
@@ -460,9 +464,11 @@ namespace Enter_The_Matrix.FactorModels
             htmlContent.Add("</div>");
             htmlContent.Add("</div>");
 
+            */
+
             #endregion
-            
-            // tactics/enterprise -- count 12 at time of writing
+
+            // tactics/enterprise -- count 14 at time of writing
             #region tactics/enterprise
 
             //htmlContent.Add("<optgroup label='Enterprise'>");
@@ -471,6 +477,115 @@ namespace Enter_The_Matrix.FactorModels
             htmlContent.Add("<a href='#' data-toggle='collapse' data-target='#collapse-enterprise'>MITRE ATT&CK ENTERPRISE</a>");
             htmlContent.Add("</div>");
             htmlContent.Add("<div id='collapse-enterprise' class='collapse' aria-labelledby='heading-enterprise' data-parent='#accordion'>");
+
+            // tactics/enterprise/TA0043 -- count 41 at time of writing
+            #region tactics TA0043
+            techniques = new Dictionary<string, string>();
+            techniques.Add("T1595", "Active Scanning");
+            techniques.Add("T1595/001", "Active Scanning: Scanning IP Blocks");
+            techniques.Add("T1595/002", "Active Scanning: Vulnerability Scanning");
+            techniques.Add("T1592", "Gather Victim Host Information");
+            techniques.Add("T1592/001", "Gather Victim Host Information: Hardware");
+            techniques.Add("T1592/002", "Gather Victim Host Information: Software");
+            techniques.Add("T1592/003", "Gather Victim Host Information: Firmware");
+            techniques.Add("T1592/004", "Gather Victim Host Information: Client Configurations");
+            techniques.Add("T1589", "Gather Victim Identity Information");
+            techniques.Add("T1589/001", "Gather Victim Identity Information: Credentials");
+            techniques.Add("T1589/002", "Gather Victim Identity Information: Email Addresses");
+            techniques.Add("T1589/003", "Gather Victim Identity Information: Employee Names");
+            techniques.Add("T1590", "Gather Victim Network Information");
+            techniques.Add("T1590/001", "Gather Victim Network Information: Domain Properties");
+            techniques.Add("T1590/002", "Gather Victim Network Information: DNS");
+            techniques.Add("T1590/003", "Gather Victim Network Information: Network Trust Dependencies");
+            techniques.Add("T1590/004", "Gather Victim Network Information: Network Topology");
+            techniques.Add("T1590/005", "Gather Victim Network Information: IP Addresses");
+            techniques.Add("T1590/006", "Gather Victim Network Information: Network Security Appliances");
+            techniques.Add("T1591", "Gather Victim Org Information");
+            techniques.Add("T1591/001", "Gather Victim Org Information: Determine Physical Locations");
+            techniques.Add("T1591/002", "Gather Victim Org Information: Business Relationships");
+            techniques.Add("T1591/003", "Gather Victim Org Information: Identify Business Tempo");
+            techniques.Add("T1591/004", "Gather Victim Org Information: Identify Roles");
+            techniques.Add("T1598", "Phishing for Information");
+            techniques.Add("T1598/001", "Phishing for Information: Spearphishing Service");
+            techniques.Add("T1598/002", "Phishing for Information: Spearphishing Attachment");
+            techniques.Add("T1598/003", "Phishing for Information: Spearphishing Link");
+            techniques.Add("T1597", "Search Closed Sources");
+            techniques.Add("T1597/001", "Search Closed Sources: Threat Intel Vendors");
+            techniques.Add("T1597/002", "Search Closed Sources: Technical Data");
+            techniques.Add("T1596", "Search Open Technical Databases");
+            techniques.Add("T1596/001", "Search Open Technical Databases: DNS/Passive DNS");
+            techniques.Add("T1596/002", "Search Open Technical Databases: WHOIS");
+            techniques.Add("T1596/003", "Search Open Technical Databases: Digital Certificates");
+            techniques.Add("T1596/004", "Search Open Technical Databases: CDNs");
+            techniques.Add("T1596/005", "Search Open Technical Databases: Scan Databases");
+            techniques.Add("T1593", "Search Open Websites/Domains");
+            techniques.Add("T1593/001", "Search Open Websites/Domains: Social Media");
+            techniques.Add("T1593/002", "Search Open Websites/Domains: Search Engines");
+            techniques.Add("T1594", "Search Victim-Owned Websites");
+
+            // Add the TA0043->techniques to our options list
+            htmlContent.Add("<div class='card-body bg-dark' id='TA0043'>");
+            htmlContent.Add("<div class='card'>");
+            htmlContent.Add("<div class='card-header bg-dark'>");
+            htmlContent.Add("<a href='#' data-toggle='collapse' data-target='#collapse-TA0043'>TA0043 - Reconnaissance</a>");
+            htmlContent.Add("</div>");
+            htmlContent.Add("<div id='collapse-TA0043' class='collapse' aria-labelledby='heading-TA0043' data-parent='#collapse-enterprise'>");
+
+            htmlContent = AddHtml(htmlContent, techniques, selected);
+            htmlContent.Add("</div>");
+            htmlContent.Add("</div>");
+            htmlContent.Add("</div>");
+            #endregion
+
+            // tactics/enterprise/TA0042 -- count 32 at time of writing
+            #region tactics TA0042
+            techniques = new Dictionary<string, string>();
+            techniques.Add("T1583", "Acquire Infrastructure");
+            techniques.Add("T1583.001", "Acquire Infrastructure: Domains");
+            techniques.Add("T1583.002", "Acquire Infrastructure: DNS Server");
+            techniques.Add("T1583.003", "Acquire Infrastructure: Virtual Private Server");
+            techniques.Add("T1583.004", "Acquire Infrastructure: Server");
+            techniques.Add("T1583.005", "Acquire Infrastructure: Botnet");
+            techniques.Add("T1583.006", "Acquire Infrastructure: Web Services");
+            techniques.Add("T1586", "Compromise Accounts");
+            techniques.Add("T1586.001", "Compromise Accounts: Social Media Accounts");
+            techniques.Add("T1586.002", "Compromise Accounts: Email Accounts");
+            techniques.Add("T1584", "Compromise Infrastructure");
+            techniques.Add("T1584.001", "Compromise Infrastructure: Domains");
+            techniques.Add("T1584.002", "Compromise Infrastructure: DNS Server");
+            techniques.Add("T1584.003", "Compromise Infrastructure: Virtual Private Server");
+            techniques.Add("T1584.004", "Compromise Infrastructure: Server");
+            techniques.Add("T1584.005", "Compromise Infrastructure: Botnet");
+            techniques.Add("T1584.006", "Compromise Infrastructure: Web Services");
+            techniques.Add("T1587", "Develop Capabilities");
+            techniques.Add("T1587.001", "Develop Capabilities: Malware");
+            techniques.Add("T1587.002", "Develop Capabilities: Code Signing Certificates");
+            techniques.Add("T1587.003", "Develop Capabilities: Digital Certificates");
+            techniques.Add("T1587.004", "Develop Capabilities: Exploits");
+            techniques.Add("T1585", "Establish Accounts");
+            techniques.Add("T1585.001", "Establish Accounts: Social Media Accounts");
+            techniques.Add("T1585.002", "Establish Accounts: Email Accounts");
+            techniques.Add("T1588", "Obtain Capabilities");
+            techniques.Add("T1588.001", "Obtain Capabilities: Malware");
+            techniques.Add("T1588.002", "Obtain Capabilities: Tool");
+            techniques.Add("T1588.003", "Obtain Capabilities: Code Signing Certificates");
+            techniques.Add("T1588.004", "Obtain Capabilities: Digital Certificates");
+            techniques.Add("T1588.005", "Obtain Capabilities: Exploits");
+            techniques.Add("T1588.006", "Obtain Capabilities: Vulnerabilities");
+
+            // Add the TA0042->techniques to our options list
+            htmlContent.Add("<div class='card-body bg-dark' id='TA0042'>");
+            htmlContent.Add("<div class='card'>");
+            htmlContent.Add("<div class='card-header bg-dark'>");
+            htmlContent.Add("<a href='#' data-toggle='collapse' data-target='#collapse-TA0042'>TA0042 - Resource Development</a>");
+            htmlContent.Add("</div>");
+            htmlContent.Add("<div id='collapse-TA0042' class='collapse' aria-labelledby='heading-TA0042' data-parent='#collapse-enterprise'>");
+
+            htmlContent = AddHtml(htmlContent, techniques, selected);
+            htmlContent.Add("</div>");
+            htmlContent.Add("</div>");
+            htmlContent.Add("</div>");
+            #endregion
 
             // tactics/enterprise/TA0001 -- count 19 at time of writing
             #region tactics TA0001
@@ -511,7 +626,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0002 -- count 28 at time of writing
+            // tactics/enterprise/TA0002 -- count 30 at time of writing
             #region tactics TA0002
 
             techniques = new Dictionary<string, string>();
@@ -523,6 +638,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1059/005", "Command and scripting interpreter: Visual Basic");
             techniques.Add("T1059/006", "Command and scripting interpreter: Python");
             techniques.Add("T1059/007", "Command and scripting interpreter: JavaScript/JScript");
+            techniques.Add("T1059/008", "Command and scripting interpreter: Network Device CLI");
             techniques.Add("T1203", "Exploitation for client execution");
             techniques.Add("T1559", "Inter-process communication");
             techniques.Add("T1559/001", "Inter-process communication: Component Object Model");
@@ -534,6 +650,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1053/003", "Scheduled task/job: Cron");
             techniques.Add("T1053/004", "Scheduled task/job: Launchd");
             techniques.Add("T1053/005", "Scheduled task/job: Scheduled task");
+            techniques.Add("T1053/006", "Systemd Timers");
             techniques.Add("T1129", "Shared modules");
             techniques.Add("T1072", "Software development tools");
             techniques.Add("T1569", "System services");
@@ -559,7 +676,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0003 -- count 93 at time of writing
+            // tactics/enterprise/TA0003 -- count 97 at time of writing
             #region tactics TA0003
 
             techniques = new Dictionary<string, string>();
@@ -581,6 +698,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1547/009", "Boot or logon autostart exeution: Shortcut modification");
             techniques.Add("T1547/010", "Boot or logon autostart exeution: Port monitors");
             techniques.Add("T1547/011", "Boot or logon autostart exeution: Plist modification");
+            techniques.Add("T1547/012", "Boot or logon autostart exeution: Print Processors");
             techniques.Add("T1037", "Boot or logon initialization scripts");
             techniques.Add("T1037/001", "Boot or logon initialization scripts: Logon script (Windows)");
             techniques.Add("T1037/002", "Boot or logon initialization scripts: Logon script (Linux)");
@@ -639,12 +757,15 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1542/001", "Pre-OS boot: System firmware");
             techniques.Add("T1542/002", "Pre-OS boot: Component firmware");
             techniques.Add("T1542/003", "Pre-OS boot: Bootkit");
+            techniques.Add("T1542/004", "Pre-OS boot: ROMMONkit");
+            techniques.Add("T1542/005", "Pre-OS boot: TFTP Boot");
             techniques.Add("T1053", "Scheduled task/job");
             techniques.Add("T1053/001", "Scheduled task/job: At (Linux)");
             techniques.Add("T1053/002", "Scheduled task/job: At (Windows)");
             techniques.Add("T1053/003", "Scheduled task/job: Cron");
             techniques.Add("T1053/004", "Scheduled task/job: Launchd");
             techniques.Add("T1053/005", "Scheduled task/job: Scheduled task");
+            techniques.Add("T1053/006", "Scheduled task/job: Systemd Timers");
             techniques.Add("T1505", "Server software component");
             techniques.Add("T1505/001", "Server software component: SQL stored procedures");
             techniques.Add("T1505/002", "Server software component: Transport agent");
@@ -672,7 +793,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0004 -- count 87 at time of writing
+            // tactics/enterprise/TA0004 -- count 89 at time of writing
             #region tactics TA0004
 
             techniques = new Dictionary<string, string>();
@@ -699,6 +820,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1547/009", "Boot or logon autostart execution: Shortcut modification");
             techniques.Add("T1547/010", "Boot or logon autostart execution: Port monitors");
             techniques.Add("T1547/011", "Boot or logon autostart execution: Plist modification");
+            techniques.Add("T1547/012", "Boot or logon autostart execution: Print Processors");
             techniques.Add("T1037", "Boot or logon initialization scripts");
             techniques.Add("T1037/001", "Boot or logon initialization scripts: Logon script (Windows)");
             techniques.Add("T1037/002", "Boot or logon initialization scripts: Logon script (Linux)");
@@ -758,6 +880,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1053/003", "Scheduled task/job: Cron");
             techniques.Add("T1053/004", "Scheduled task/job: Launchd");
             techniques.Add("T1053/005", "Scheduled task/job: Scheduled task");
+            techniques.Add("T1053/006", "Scheduled task/job: Systemd Timers");
             techniques.Add("T1078", "Valid accounts");
             techniques.Add("T1078/001", "Valid accounts: Default accounts");
             techniques.Add("T1078/002", "Valid accounts: Domain accounts");
@@ -779,7 +902,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0005 -- count 138 at time of writing
+            // tactics/enterprise/TA0005 -- count 149 at time of writing
             #region tactics TA0005
 
             techniques = new Dictionary<string, string>();
@@ -811,6 +934,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1564/004", "Hide artifacts: NTFS file attributes");
             techniques.Add("T1564/005", "Hide artifacts: Hidden file system");
             techniques.Add("T1564/006", "Hide artifacts: Run virtual instance");
+            techniques.Add("T1564/007", "Hide artifacts: VBA Stomping");
             techniques.Add("T1574", "Hijack execution flow");
             techniques.Add("T1574/001", "Hijack execution flow: DLL search order hijacking");
             techniques.Add("T1574/002", "Hijack execution flow: DLL side-loading");
@@ -830,6 +954,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1562/004", "Impair defenses: Disable or modify system firewall");
             techniques.Add("T1562/006", "Impair defenses: Indicator blocking");
             techniques.Add("T1562/007", "Impair defenses: Disable or modify cloud firewall");
+            techniques.Add("T1562/008", "Impair defenses: Disable Cloud Logs");
             techniques.Add("T1070", "Indicator removal on host");
             techniques.Add("T1070/001", "Indicator removal on host: Clear Windows event logs");
             techniques.Add("T1070/002", "Indicator removal on host: Clear Linux or Mac system logs");
@@ -849,12 +974,18 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1556/001", "Modify authentication process: Domain controller authentication");
             techniques.Add("T1556/002", "Modify authentication process: Password filter DLL");
             techniques.Add("T1556/003", "Modify authentication process: Pluggable authentication modules");
+            techniques.Add("T1556/004", "Modify authentication process: Network Device Authentication");
             techniques.Add("T1578", "Modify cloud compute infrastructure");
             techniques.Add("T1578/001", "Modify cloud compute infrastructure: Create snapshot");
             techniques.Add("T1578/002", "Modify cloud compute infrastructure: Create cloud instance");
             techniques.Add("T1578/003", "Modify cloud compute infrastructure: Delete cloud instance");
             techniques.Add("T1578/004", "Modify cloud compute infrastructure: Revert cloud instance");
             techniques.Add("T1112", "Modify registry");
+            techniques.Add("T1601", "Modify System Image");
+            techniques.Add("T1601/001", "Modify System Image: Patch System Image");
+            techniques.Add("T1601/002", "Modify System Image: Downgrade System Image");
+            techniques.Add("T1599", "Network Boundary Bridging");
+            techniques.Add("T1599/001", "Network Boundary Bridging: Network Address Translation Traversal");
             techniques.Add("T1027", "Obfuscated files or information");
             techniques.Add("T1027/001", "Obfuscated files or information: Binary padding");
             techniques.Add("T1027/002", "Obfuscated files or information: Software packing");
@@ -865,6 +996,8 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1542/001", "Pre-OS boot: System firmware");
             techniques.Add("T1542/002", "Pre-OS boot: Component firmware");
             techniques.Add("T1542/003", "Pre-OS boot: Bootkit");
+            techniques.Add("T1542/004", "Pre-OS boot: ROMMONkit");
+            techniques.Add("T1542/005", "Pre-OS boot: TFTP Boot");
             techniques.Add("T1055", "Process injection");
             techniques.Add("T1055/001", "Process injection: Dynamic-link library injection");
             techniques.Add("T1055/002", "Process injection: Portable executable injection");
@@ -890,6 +1023,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1218/009", "Signed binary proxy execution: Regsvcs/Regasm");
             techniques.Add("T1218/010", "Signed binary proxy execution: Regsvr32");
             techniques.Add("T1218/011", "Signed binary proxy execution: Rundll32");
+            techniques.Add("T1218/012", "Signed binary proxy execution: Verclsid");
             techniques.Add("T1216", "Signed script proxy execution");
             techniques.Add("T1216/001", "Signed script proxy execution: PubPrn");
             techniques.Add("T1553", "Subvert trust controls");
@@ -901,7 +1035,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1205", "Traffic signaling");
             techniques.Add("T1205/001", "Traffic signaling: Port knocking");
             techniques.Add("T1127", "Trusted developer utilities proxy execution");
-            techniques.Add("T1127/001", "Trusted developer utilities proxy execution: MSBuilt");
+            techniques.Add("T1127/001", "Trusted developer utilities proxy execution: MSBuild");
             techniques.Add("T1535", "Unused/Unsupported cloud regions");
             techniques.Add("T1550", "Use alternative authentication material");
             techniques.Add("T1550/001", "Use alternative authentication material: Application access token");
@@ -917,6 +1051,9 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1497/001", "Virtualization/Sandbox evasion: System checks");
             techniques.Add("T1497/002", "Virtualization/Sandbox evasion: User activity based checks");
             techniques.Add("T1497/003", "Virtualization/Sandbox evasion: Time based evasion");
+            techniques.Add("T1600", "Weaken Encryption");
+            techniques.Add("T1600/001", "Weaken Encryption: Reduce Key Space");
+            techniques.Add("T1600/002", "Weaken Encryption: Disable Crypto Hardware");
             techniques.Add("T1220", "XSL script processing");
             
             // Add the TA0005->techniques to our options list
@@ -934,7 +1071,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0006 -- count 46 at time of writing
+            // tactics/enterprise/TA0006 -- count 49 at time of writing
             #region tactics TA0006
 
             techniques = new Dictionary<string, string>();
@@ -956,10 +1093,12 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1056/004", "Input capture: Credential API hooking");
             techniques.Add("T1557", "Man-in-the-Middle");
             techniques.Add("T1557/001", "Man-in-the-Middle: LLMNR/NBT-NS poisoning and SMB relay");
+            techniques.Add("T1557/002", "Man-in-the-Middle: ARP Cache Poisoning");
             techniques.Add("T1556", "Modify authentication process");
             techniques.Add("T1556/001", "Modify authentication process: Domain controller authentication");
             techniques.Add("T1556/002", "Modify authentication process: Password filter DLL");
             techniques.Add("T1556/003", "Modify authentication process: Pluggable authentication modules");
+            techniques.Add("T1556/004", "Modify authentication process: Network Device Authentication");
             techniques.Add("T1040", "Network sniffing");
             techniques.Add("T1003", "OS credential dumping");
             techniques.Add("T1003/001", "OS credential dumping: LSASS memory");
@@ -975,6 +1114,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1558/001", "Steal or forge kerberos tickets: Golden ticket");
             techniques.Add("T1558/002", "Steal or forge kerberos tickets: Silver ticket");
             techniques.Add("T1558/003", "Steal or forge kerberos tickets: Kerberoasting");
+            techniques.Add("T1558/004", "Steal or forge kerberos tickets: AS-REP Roasting");
             techniques.Add("T1539", "Steal web session cookie");
             techniques.Add("T1111", "Two-factor authentication interception");
             techniques.Add("T1552", "Unsecured credentials");
@@ -1000,7 +1140,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0007 -- count 35 at time of writing
+            // tactics/enterprise/TA0007 -- count 36 at time of writing
             #region tactics TA0007
 
             techniques = new Dictionary<string, string>();
@@ -1011,6 +1151,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1087/004", "Account discovery: Cloud account");
             techniques.Add("T1010", "Application window discovery");
             techniques.Add("T1217", "Browser bookmark discovery");
+            techniques.Add("T1580", "Cloud Infrastructure Discovery");
             techniques.Add("T1538", "Cloud service dashboard");
             techniques.Add("T1526", "Cloud service discovery");
             techniques.Add("T1482", "Domain trust discovery");
@@ -1096,7 +1237,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0009 -- count 31 at time of writing
+            // tactics/enterprise/TA0009 -- count 35 at time of writing
             #region tactics TA0009
 
             techniques = new Dictionary<string, string>();
@@ -1108,6 +1249,9 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1119", "Automated collection");
             techniques.Add("T1115", "Clipboard data");
             techniques.Add("T1530", "Data from cloud storage object");
+            techniques.Add("T1602", "Data from Configuration Repository");
+            techniques.Add("T1602/001", "Data from Configuration Repository: SNMP (MIB Dump)");
+            techniques.Add("T1602/002", "Data from Configuration Repository: Network Device Configuration Dump");
             techniques.Add("T1213", "Data from information repositories");
             techniques.Add("T1213/001", "Data from information repositories: Confluence");
             techniques.Add("T1213/002", "Data from information repositories: Sharepoint");
@@ -1129,6 +1273,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1185", "Man in the browser");
             techniques.Add("T1557", "Man-in-the-Middle");
             techniques.Add("T1557/001", "Man-in-the-Middle: LLMNR/NBT-NS poisoning and SMB relay");
+            techniques.Add("T1557/002", "Man-in-the-Middle: ARP Cache Poisoning");
             techniques.Add("T1113", "Screen capture");
             techniques.Add("T1125", "Video capture");
 
@@ -1147,7 +1292,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0011 -- count 36 at time of writing
+            // tactics/enterprise/TA0011 -- count 38 at time of writing
             #region tactics TA0011
 
             techniques = new Dictionary<string, string>();
@@ -1205,11 +1350,12 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/enterprise/TA0010 -- count 16 at time of writing
+            // tactics/enterprise/TA0010 -- count 17 at time of writing
             #region tactics TA0010
 
             techniques = new Dictionary<string, string>();
             techniques.Add("T1020", "Automated exfiltration");
+            techniques.Add("T1020/001", "Automated exfiltration: Traffic Duplication");
             techniques.Add("T1030", "Data trasnfer size limits");
             techniques.Add("T1048", "Exfiltration over alternative protocol");
             techniques.Add("T1048/001", "Exfiltration over alternative protocol: Exfiltration over symmetric encrypted non-C2 protocol");
@@ -1409,16 +1555,18 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/mobile/TA0030 -- count 16 at time of writing
+            // tactics/mobile/TA0030 -- count 18 at time of writing
             #region tactics TA0030
 
             techniques = new Dictionary<string, string>();
             techniques.Add("T1418", "Application discovery");
             techniques.Add("T1540", "Code injection");
+            techniques.Add("T1447", "Delete Device Data");
             techniques.Add("T1446", "Device lockout");
             techniques.Add("T1408", "Disguise root/jailbreak indicators");
             techniques.Add("T1407", "Download new code at runtime");
             techniques.Add("T1523", "Evade analysis environment");
+            techniques.Add("T1581", "Geofencing");
             techniques.Add("T1516", "Input injection");
             techniques.Add("T1478", "Install insecure or malicious configuration");
             techniques.Add("T1444", "Masquerade as legitimate application");
@@ -1445,14 +1593,13 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/mobile/TA0031 -- count 12 at time of writing
+            // tactics/mobile/TA0031 -- count 11 at time of writing
             #region tactics TA0031
 
             techniques = new Dictionary<string, string>();
             techniques.Add("T1517", "Access notifications");
             techniques.Add("T1413", "Access sensitive data in device logs");
             techniques.Add("T1409", "Access stored application data");
-            techniques.Add("T1416", "Android intent hijacking");
             techniques.Add("T1414", "Capture clipboard data");
             techniques.Add("T1412", "Capture SMS messages");
             techniques.Add("T1405", "Exploit TEE vulnerability");
@@ -1460,7 +1607,8 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1411", "Input prompt");
             techniques.Add("T1579", "Keychain");
             techniques.Add("T1410", "Network traffic capture or redirection");
-            techniques.Add("T1415", "URL scheme hijacking");
+            techniques.Add("T1416", "URI Hijacking");
+            //techniques.Add("T1415", "URL scheme hijacking");
 
             // Add the TA0031->techniques to our options list
             htmlContent.Add("<div class='card-body bg-dark' id='TA0031'>");
@@ -1617,7 +1765,7 @@ namespace Enter_The_Matrix.FactorModels
 
             #endregion
 
-            // tactics/mobile/TA0034 -- count 9 at time of writing
+            // tactics/mobile/TA0034 -- count 10 at time of writing
             #region tactics TA0034
 
             techniques = new Dictionary<string, string>();
@@ -1630,6 +1778,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1516", "Input injection");
             techniques.Add("T1452", "Manipulate app store rankings or ratings");
             techniques.Add("T1400", "Modify system partition");
+            techniques.Add("T1582", "SMS Control");
 
             // Add the TA0034->techniques to our options list
             htmlContent.Add("<div class='card-body bg-dark' id='TA0034'>");
@@ -1684,9 +1833,7 @@ namespace Enter_The_Matrix.FactorModels
             techniques.Add("T1469", "Remotely wipe data without authorization");
 
             // Add the TA0039->techniques to our options list
-            htmlContent.Add("<optgroup label='TA0039 - Remote Service Effects'>");
-            htmlContent = AddHtml(htmlContent, techniques, selected);
-
+            
             htmlContent.Add("<div class='card-body bg-dark' id='TA0039'>");
             htmlContent.Add("<div class='card'>");
             htmlContent.Add("<div class='card-header bg-dark'>");

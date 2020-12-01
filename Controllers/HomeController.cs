@@ -386,12 +386,13 @@ namespace Enter_The_Matrix.Controllers
             string condition = "",
             string entity_type = "",
             string entity_description = "",
-            string entity_preceded_by = "",
+            string[] entity_preceded_by = null,
             string mitreId = "")
         {
             if (!User.Identity.IsAuthenticated) { return Unauthorized(); }
             if (!ModelState.IsValid) { return BadRequest(); }
 
+            if(entity_description == "" || entity_description == null) { entity_description = " "; }
             Node node = new Node(entity_preceded_by, entity_type, entity_description, risk, stepId);
 
 
@@ -527,6 +528,46 @@ namespace Enter_The_Matrix.Controllers
             return RedirectToAction("EditEvent", "Home", new { stepId = importedStep.Id, scenarioId = scenarioId, assessmentId = assessmentId });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> TemplateEvent(string stepId)
+        {
+            if (!User.Identity.IsAuthenticated) { return Unauthorized(); }
+
+            Steps step = new Steps();
+            step = await _stepsService.GetByIdAsync(stepId);
+
+            Steplates steplate = new Steplates();
+            steplate.AddedBy = User.FindFirst("DisplayName").Value;
+            steplate.Adverse = step.Adverse;
+            steplate.Capability = step.Capability;
+            steplate.Date = DateTime.Now;
+            steplate.Event = step.Event;
+            steplate.Impact = step.Impact;
+            steplate.Initiation = step.Initiation;
+            steplate.Intent = step.Intent;
+            steplate.Likelihood = step.Likelihood;
+            steplate.MitreId = step.MitreId;
+            steplate.Risk = step.Risk;
+            steplate.Targeting = step.Targeting;
+            steplate.ThreatSource = step.ThreatSource;
+
+            Node node = new Node(null, step.GraphNode.EntityType, step.GraphNode.EntityDescription, "", "");
+
+            steplate.GraphNode = node;
+
+            steplate.Vulnerability = "";
+            steplate.Pervasiveness = 0;
+            steplate.Severity = 0;
+            steplate.Mitigation = "";
+            steplate.Relevance = "";
+            steplate.Condition = "";
+
+            Steplates retSteplate = await _steplatesService.CreateAsync(steplate);
+
+            return RedirectToAction("EditSteplate", "Home", new { steplateId = retSteplate.Id });
+
+        }
+        
         #endregion
 
         #region Steplates
@@ -1003,19 +1044,25 @@ namespace Enter_The_Matrix.Controllers
 
             foreach (var step in stepList)
             {
-                if (step.GraphNode == null || step.GraphNode.Id == null || step.GraphNode.EntityDescription == null || step.GraphNode.EntityType == null)
+                for (int i = 0; i < step.GraphNode.ParentId.Length; i++)
                 {
-                    break;
+                    if (step.GraphNode == null || step.GraphNode.Id == null || step.GraphNode.EntityDescription == null || step.GraphNode.EntityType == null)
+                    {
+                        break;
+                    }
+                    else if (step.GraphNode.ParentId[i] == null || step.GraphNode.ParentId[i] == "")
+                    {
+                        step.GraphNode.ParentId[i] = "root";
+                    }
+                    else
+                    {
+                        continue;
+                    }
                 }
-                else if (step.GraphNode.ParentId == null || step.GraphNode.ParentId == "")
-                {
-                    step.GraphNode.ParentId = "root";
-                    nodeList.Add(step.GraphNode);
-                }
-                else
-                {
-                    nodeList.Add(step.GraphNode);
-                }
+
+                // Once we've made sure all root replacements have been made, add the node to the list
+                nodeList.Add(step.GraphNode);
+
             }
 
             // Workaround for graphiz IDs
@@ -1080,9 +1127,13 @@ namespace Enter_The_Matrix.Controllers
             {
                 if (node.ParentId != null)
                 {
-                    string idString = graphizIdTable.GetValueOrDefault(node.Id);
-                    string parentIdString = graphizIdTable.GetValueOrDefault(node.ParentId);
-                    document.Add("\t" + parentIdString + " -> " + idString + " [label=\"" + stepCount++ + ".\",fontsize=8,color=\"" + node.GetRiskColor() + "\"]");
+                    int stepCount2 = stepCount++;
+                    foreach (var parent in node.ParentId)
+                    {
+                        string idString = graphizIdTable.GetValueOrDefault(node.Id);
+                        string parentIdString = graphizIdTable.GetValueOrDefault(parent);
+                        document.Add("\t" + parentIdString + " -> " + idString + " [label=\"" + stepCount2 + ".\",fontsize=8,color=\"" + node.GetRiskColor() + "\"]");
+                    }
                 }
             }
 

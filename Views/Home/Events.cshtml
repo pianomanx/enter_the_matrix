@@ -116,7 +116,7 @@
 
 <!-- Create Modal -->
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body dialog-box_success">
                 <p>Select a steplate to import or create a new one from scratch:</p>
@@ -124,7 +124,9 @@
                 <form asp-action="ImportEvent" asp-controller="Home" method="post">
                     <div class="form-group">
                         <label for="name-text">Import Steplate</label>
-                        <select class="form-control bg-dark text-light" id="name-text" name="steplateId">
+                        <input type="text" placeholder="FILTER" class="bg-dark text-light" id="filterInput" onkeyup="filterImport()" style="float:right;" />
+                        <br /><br />
+                        <select size="10" style="width: 100%;" class="form-control bg-dark text-light" id="importList" name="steplateId">
                             @{ foreach (var steplate in ViewBag.steplates)
                                             {
                                 <option value="@steplate.Id">@steplate.Event</option> } }
@@ -161,6 +163,22 @@
             $("#sortable li").disableSelection();
 
         });
+
+        function filterImport() {
+            var input = document.getElementById("filterInput");
+            var filter = input.value.toUpperCase();
+            var select = document.getElementById("importList");
+            var options = select.getElementsByTagName("option");
+
+            for (var i = 0; i < options.length; i++) {
+                var content = options[i].textContent.toUpperCase();
+                if (content.indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        }
 
     </script>
     <!-- END NEW -->
