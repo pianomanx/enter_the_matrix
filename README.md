@@ -1,3 +1,7 @@
+# About
+
+Enter The Matrix (ETM) allows operators to collaboratively edit Threat Scenarios and Events to be exported as threat matrices for entire assessments, or Directed Threat Graphs for individual Scenarios. Threat Matrices are based on the NIST 800-30r1 guidelines, and also include some minor changes that incorporate, among other things, the MITRE ATT&CK framework.
+
 # Table of Contents
 
    * [Deploying ETM](#deploying-etm)
